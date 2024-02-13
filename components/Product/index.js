@@ -26,11 +26,16 @@ export default function Product() {
   }
 
   async function handleDeleteProduct(id) {
-    const response = await fetch(`/api/products/${id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      router.push("/");
+    const confirmation = confirm(
+      "Are you sure you want to delete this product?"
+    );
+    if (confirmation) {
+      const response = await fetch(`/api/products/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        router.push("/");
+      }
     }
   }
 

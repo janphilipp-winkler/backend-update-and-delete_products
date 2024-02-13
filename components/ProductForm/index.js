@@ -4,7 +4,11 @@ import { StyledButton } from "../Button/Button.styled";
 export default function ProductForm({ onSubmit, isEditMode, value }) {
   return (
     <StyledForm onSubmit={onSubmit}>
-      {!isEditMode && <StyledHeading>Add a new Fish</StyledHeading>}
+      {isEditMode ? (
+        <StyledHeading>{"Edit the product"}</StyledHeading>
+      ) : (
+        <StyledHeading>{"Add a new Fish"}</StyledHeading>
+      )}
       <StyledLabel htmlFor="name">
         Name:
         <input type="text" id="name" name="name" defaultValue={value.name} />
